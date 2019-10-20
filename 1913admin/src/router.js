@@ -1,10 +1,17 @@
 import React,{Component} from 'react'
+import ComponentImport from './utils/componentImport'
 import {HashRouter,Switch,Redirect,Route} from 'react-router-dom'
 
-import Login from './component/login'
-import Admin from './component/admin'
-import User from './component/user'
-import Home from './component/home'
+// import Login from './component/login/load'
+// import Admin from './component/admin'
+// import User from './component/user'
+// import Home from './component/home'
+
+
+const Login = ComponentImport(()=>import('./component/login'))
+const Admin = ComponentImport(()=>import('./component/admin'))
+const User = ComponentImport(()=>import('./component/user'))
+const Home = ComponentImport(()=>import('./component/home'))
 class RootRouter extends Component{
     render(){
       return(
