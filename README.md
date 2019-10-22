@@ -22,6 +22,9 @@
     antd和less
     前期由于antd是基于less2版本2.7.3
     所以建议将less版本降至2.7.3
+    按需引入:
+        1.安装插件 npm install babel-plugins-import
+        2.webpack.config.js  查找babel-loader   ['import',{"libraryName":"antd",style:true}] 
 3.共有插件
     redux   
     router

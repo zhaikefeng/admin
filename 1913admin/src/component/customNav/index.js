@@ -4,7 +4,7 @@ import { Menu} from 'antd';
 const { SubMenu } = Menu;
 let navData=[
   {name:'首页',path:'/admin/home'},
-  {name:'设置',path:'/setting'},
+  {name:'设置',path:'/admin/setting'},
   {name:'用户管理',
    path:'/user',
    children:[
@@ -26,6 +26,10 @@ let navData=[
 ]
 
 class Nav extends Component{
+  jump(path){
+    console.log(this)
+    this.props.history.push(path)
+  }
   //这里面的递归函数可以学一下
   renderitem =(data)=>{
     return data.map((item,index)=>{
@@ -36,12 +40,12 @@ class Nav extends Component{
           </SubMenu>
         )
       } else{
-        return (<Menu.Item key={index}>{item.name}</Menu.Item>)
+        return (<Menu.Item key={index} onClick={this.jump.bind(this,item.path)}>{item.name}</Menu.Item>)
       }
     })
   }
   render(){
-    console.log(this,'自定义导航')
+    // console.log(this,'自定义导航')
     return(
       <div className="nav">
          

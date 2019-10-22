@@ -81,7 +81,15 @@ module.exports = function(proxy, allowedHost) {
       disableDotRule: true,
     },
     public: allowedHost,
-    proxy,
+    proxy:{
+      '/yapi':{
+        target:'http://yapi.demo.qunar.com/mock/9814',
+        changeOrigin:true,
+        pathRewrite:{
+          '^/yapi':''
+        }
+      }
+    },
     before(app, server) {
       if (fs.existsSync(paths.proxySetup)) {
         // This registers user provided middleware for proxy reasons

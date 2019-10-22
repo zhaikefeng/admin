@@ -1,26 +1,32 @@
 import React,{Component} from 'react'
 import { Card,Form, Icon, Input, Button, Checkbox,message } from 'antd';
+import './index.less'
 class Login extends Component{
   submit=()=>{
-    console.log('数据提交')
+    // console.log('数据提交')
     // let result = this.props.form.getFieldsValue()
     // console.log(result)    这个方法是获取表单里面的value值
     this.props.form.validateFields((err,data)=>{
       if(err) {
         message.error('输入信息有误请重试')
       } else {
+        this.$axios.get ("/yapi/admin/login",{us:123,ps:123})
+        .then((data)=>{
+          console.log(data)
+        })
         message.success('登录成功1s后跳转首页',1,()=>{
           this.props.history.push('/admin')
         })
       }
-      console.log(err,data)
+      // console.log(err,data)
     })
   }
   render(){
-    console.log(this)
+    // console.log(this)
     const { getFieldDecorator } = this.props.form;
     // console.log(getFieldDecorator)
     return(
+      <div className='bg'>
       <Card style={{width:'400px',position:'fixed',top:'17vh',right:'50px'}}>
          <div className="login-form">
         <Form.Item>
@@ -60,6 +66,7 @@ class Login extends Component{
         </Form.Item>
       </div>
       </Card>
+      </div>
     )
   }
 }
